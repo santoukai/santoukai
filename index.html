@@ -1,4 +1,4 @@
-from pathlib import Path
+
 
 html = """<!DOCTYPE html>
 <html lang="ja">
@@ -212,9 +212,4 @@ html = """<!DOCTYPE html>
     <footer>© 2026 参韜会</footer>
   </main>
 </body>
-</html>
-"""
 
-path = Path("/mnt/data/index.html")
-path.write_text(html, encoding="utf-8")
-print(f"Created: {path}")
