@@ -1,146 +1,220 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<title>参韜会</title>
-</head>
-<body>
-<h1>参韜会ホームページ</h1>
-<p>GitHub Pages の公開テストです。</p>
-</body>
-</html>
-<!DOCTYPE html>
+from pathlib import Path
+
+html = """<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>参韜会</title>
+  <meta name="description" content="参韜会の公式ホームページです。師家 小林玄徳老師。開催日・時間・会場をご案内します。">
+  <title>参韜会｜師家 小林玄徳老師</title>
 
   <style>
-    body{
-      font-family: "Yu Gothic", sans-serif;
-      background:#f5f5f5;
-      margin:0;
-      padding:0;
-      color:#333;
+    * {
+      box-sizing: border-box;
     }
 
-    header{
-      background:#2f4f4f;
-      color:white;
-      text-align:center;
-      padding:30px;
+    body {
+      margin: 0;
+      font-family:
+        -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+        "Yu Gothic", "Meiryo", sans-serif;
+      color: #2f2f2f;
+      background: #f3f3f3;
+      line-height: 1.7;
     }
 
-    h1{
-      margin:0;
-      font-size:40px;
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 16px 48px;
     }
 
-    .container{
-      max-width:800px;
-      margin:30px auto;
-      background:white;
-      padding:30px;
-      border-radius:10px;
-      box-shadow:0 0 10px rgba(0,0,0,0.15);
+    .hero {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 42px 28px;
+      margin-bottom: 26px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
-    h2{
-      border-left:8px solid #2f4f4f;
-      padding-left:10px;
+    .site-title {
+      margin: 0;
+      font-size: clamp(2.2rem, 8vw, 4.4rem);
+      letter-spacing: 0.14em;
+      color: #294f4f;
     }
 
-    table{
-      width:100%;
-      border-collapse:collapse;
-      margin-top:15px;
+    .teacher {
+      margin: 18px 0 0;
+      font-size: clamp(1.25rem, 4.7vw, 2rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
     }
 
-    th,td{
-      border:1px solid #ccc;
-      padding:10px;
-      text-align:center;
+    .card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 34px 24px 40px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
-    th{
-      background:#e8e8e8;
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 26px;
+      font-size: clamp(1.8rem, 6vw, 2.8rem);
     }
 
-    footer{
-      text-align:center;
-      margin:30px;
-      color:#666;
+    .section-title::before {
+      content: "";
+      width: 12px;
+      height: 1.6em;
+      background: #315d5d;
+      flex: 0 0 auto;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: clamp(1rem, 3.7vw, 1.45rem);
+      background: #ffffff;
+    }
+
+    th,
+    td {
+      border: 1px solid #c7c7c7;
+      padding: 20px 12px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    th {
+      background: #e8e8e8;
+      font-weight: 700;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 39%;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 34%;
+    }
+
+    th:nth-child(3),
+    td:nth-child(3) {
+      width: 27%;
+    }
+
+    footer {
+      padding-top: 30px;
+      text-align: center;
+      color: #6a6a6a;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        padding: 18px 0 38px;
+      }
+
+      .hero,
+      .card {
+        border-radius: 18px;
+      }
+
+      .hero {
+        padding: 34px 16px;
+        margin-bottom: 18px;
+      }
+
+      .card {
+        padding: 30px 16px 34px;
+      }
+
+      th,
+      td {
+        padding: 16px 7px;
+      }
     }
   </style>
 </head>
 
 <body>
+  <main class="page">
+    <section class="hero">
+      <h1 class="site-title">参韜会</h1>
+      <p class="teacher">師家　小林玄徳老師</p>
+    </section>
 
-<header>
-  <h1>参韜会</h1>
-</header>
+    <section class="card">
+      <h2 class="section-title">開催日</h2>
 
-<div class="container">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>開催日</th>
+              <th>時間</th>
+              <th>会場</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2026年9月13日（日）</td>
+              <td>12:00 開門<br>～ 15:00</td>
+              <td>相国寺<br>東京別院</td>
+            </tr>
+            <tr>
+              <td>2026年10月11日（日）</td>
+              <td>12:00 開門<br>～ 15:00</td>
+              <td>相国寺<br>東京別院</td>
+            </tr>
+            <tr>
+              <td>2026年11月8日（日）</td>
+              <td>12:00 開門<br>～ 15:00</td>
+              <td>相国寺<br>東京別院</td>
+            </tr>
+            <tr>
+              <td>2026年12月13日（日）</td>
+              <td>12:00 開門<br>～ 15:00</td>
+              <td>相国寺<br>東京別院</td>
+            </tr>
+            <tr>
+              <td>2027年1月10日（日）</td>
+              <td>12:00 開門<br>～ 15:00</td>
+              <td>相国寺<br>東京別院</td>
+            </tr>
+            <tr>
+              <td>2027年2月14日（日）</td>
+              <td>12:00 開門<br>～ 15:00</td>
+              <td>相国寺<br>東京別院</td>
+            </tr>
+            <tr>
+              <td>2027年3月14日（日）</td>
+              <td>12:00 開門<br>～ 15:00</td>
+              <td>相国寺<br>東京別院</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-<h2>開催日</h2>
-
-<table>
-<tr>
-<th>開催日</th>
-<th>時間</th>
-<th>会場</th>
-</tr>
-
-<tr>
-<td>2026年9月13日（日）</td>
-<td>12:00 開門 ～ 15:00</td>
-<td>相国寺東京別院</td>
-</tr>
-
-<tr>
-<td>2026年10月11日（日）</td>
-<td>12:00 開門 ～ 15:00</td>
-<td>相国寺東京別院</td>
-</tr>
-
-<tr>
-<td>2026年11月8日（日）</td>
-<td>12:00 開門 ～ 15:00</td>
-<td>相国寺東京別院</td>
-</tr>
-
-<tr>
-<td>2026年12月13日（日）</td>
-<td>12:00 開門 ～ 15:00</td>
-<td>相国寺東京別院</td>
-</tr>
-
-<tr>
-<td>2027年1月10日（日）</td>
-<td>12:00 開門 ～ 15:00</td>
-<td>相国寺東京別院</td>
-</tr>
-
-<tr>
-<td>2027年2月14日（日）</td>
-<td>12:00 開門 ～ 15:00</td>
-<td>相国寺東京別院</td>
-</tr>
-
-<tr>
-<td>2027年3月14日（日）</td>
-<td>12:00 開門 ～ 15:00</td>
-<td>相国寺東京別院</td>
-</tr>
-
-</table>
-
-</div>
-
-<footer>
-© 2026 参韜会
-</footer>
-
+    <footer>© 2026 参韜会</footer>
+  </main>
 </body>
 </html>
+"""
+
+path = Path("/mnt/data/index.html")
+path.write_text(html, encoding="utf-8")
+print(f"Created: {path}")
